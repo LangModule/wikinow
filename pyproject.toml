@@ -1,0 +1,73 @@
+[project]
+name = "wikinow"
+version = "0.1.0"
+description = "Know it now. Keep it forever. Local-first personal knowledge base compiled by LLMs."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+authors = [{ name = "LangModule" }]
+keywords = ["wiki", "knowledge-base", "mcp", "llm", "personal-knowledge"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Text Processing :: General",
+]
+
+dependencies = [
+    "fastmcp>=3.2.4",
+    "pyyaml>=6.0",
+    "rich>=13.0",
+    "typer>=0.24.2",
+]
+
+[project.scripts]
+wikinow = "wikinow.cli:app"
+wn = "wikinow.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/LangModule/wikinow"
+Repository = "https://github.com/LangModule/wikinow"
+Issues = "https://github.com/LangModule/wikinow/issues"
+
+[project.optional-dependencies]
+pdf = [
+    "pymupdf>=1.27.2.3",
+]
+watch = [
+    "watchdog>=6.0.0",
+]
+ollama = [
+    "ollama>=0.6.1",
+]
+youtube = [
+    "yt-dlp>=2026.3.17",
+]
+epub = [
+    "beautifulsoup4>=4.14.3",
+    "ebooklib>=0.20",
+]
+whisper = [
+    "openai-whisper>=20250625",
+]
+all = [
+    "wikinow[pdf,watch,ollama,youtube,epub,whisper]",
+]
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.25",
+    "ruff>=0.11",
+]
